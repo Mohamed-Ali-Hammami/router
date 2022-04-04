@@ -1,8 +1,11 @@
- import React from "react";
+ import { Link } from "react-router-dom";
+import React from "react";
+import Stars from "../Stars/Stars";
  import './moviecard.scss';
+ 
 
 
-const MovieCard = ({movie : {title , year , image , desc , rate,trailer , filmlink }})=> {
+const MovieCard = ({movie : {time, gender, title , year , image , desc , rate,trailer , filmlink ,id },movies,setMovies,})=> {
     return (
       <div class="cellphone-container">    
       <div class="movie">       
@@ -15,9 +18,8 @@ const MovieCard = ({movie : {title , year , image , desc , rate,trailer , filmli
             <div class="col1">
               <h1 className='heading' >{title}</h1>
               <ul class="movie-gen">
-                <li>PG-13  /</li>
-                <li>2h 49min  /</li>
-                <li>Adventure, Drama, Sci-Fi,</li>
+                <li>{time}  /</li>
+                <li>{gender}</li>
               </ul>
             </div>
           </div>
@@ -39,7 +41,7 @@ const MovieCard = ({movie : {title , year , image , desc , rate,trailer , filmli
           </div>
           <div class="mr-grid actors-row">
             <div class="col1">
-              <p class="movie-actors">{rate}</p>
+              <p><Stars class="movie-actors" rating={rate} isEdit={false}></Stars></p>
             </div>
           </div>
           <div class="mr-grid action-row">
@@ -53,6 +55,12 @@ const MovieCard = ({movie : {title , year , image , desc , rate,trailer , filmli
             <div class="col2"><div class="watch-btn"><h3 className='watch-btn-text heading'><i class="material-icons">&#xE037;</i>WATCH MOVIE</h3></div>
             </div>
             </a>
+            
+             <Link to={`/moviedetails/${id}`}>
+            <div class="col2" ><div class="watch-btn"><h3 className='watch-btn-text heading'><i class="material-icons">&#xE037;</i>Show More</h3></div>
+            </div>
+            /</Link>
+            
             <div class="col6 action-btn"><i class="material-icons">&#xE161;</i>
             </div>
             <div class="col6 action-btn"><i class="material-icons">&#xE866;</i>
